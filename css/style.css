@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movePen{
+    position: absolute;
+    width: 20%;
+    height: 30%;
+}
+
+.book{
+    width: 25rem;
+    height: 29rem;
+    background: #fcfcfc;
+}
+
+.movePen img{
+    width: 80px;
+}
