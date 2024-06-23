@@ -45,6 +45,11 @@ h1 {
     font-size: 3.5rem;
 }
 
+.message{
+    width: 80%;
+    margin: auto;
+}
+
 .erasing-animation {
     animation-name: erasing;
     animation-duration: 1.8s;
