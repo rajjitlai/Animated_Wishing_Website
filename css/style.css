@@ -18,14 +18,21 @@ body{
     position: absolute;
     width: 20%;
     height: 30%;
+    bottom: 10.8rem;
+    left: 8rem;
 }
 
 .book{
     width: 25rem;
     height: 29rem;
     background: #fcfcfc;
+    font-family: cursive;
+    border-bottom: 25px solid blue;
+    font-size: x-large;
+    padding: 1.5rem;
+    line-height: 3rem;
 }
 
-.movePen img{
-    width: 80px;
+img{
+    width: 480px;
 }
