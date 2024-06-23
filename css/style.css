@@ -8,43 +8,10 @@
 body {
     height: 100vh;
     overflow: hidden;
-    border: 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.movingPen {
-    position: relative;
-    width: 50%;
-    height: 50%;
-    bottom: 9rem;
-    left: 0rem;
-    animation: write 0.6s ease-in-out infinite, leftWrite 6s ease-in-out infinite;
-}
-
-@keyframes write {
-    from {
-        bottom: 9rem;
-    }
-
-    50% {
-        bottom: 9rem;
-    }
-
-    to {
-        bottom: 8rem;
-    }
-}
-
-@keyframes leftWrite {
-    from {
-        left: 0rem;
-    }
-
-    100% {
-        left: 20rem;
-    }
+    background-color: #f0f0f0;
 }
 
 .book {
@@ -56,15 +23,37 @@ body {
     font-size: x-large;
     padding: 1.5rem;
     line-height: 3rem;
+    position: relative;
 }
 
-img {
-    width: 480px;
+.movingPen {
+    position: absolute;
+    width: 100px;
+    bottom: 10rem;
+    left: 0;
+    animation: movePen 6s ease-in-out infinite;
+}
+
+@keyframes movePen {
+    0% {
+        bottom: 10rem;
+        left: 0;
+    }
+
+    50% {
+        bottom: 9rem;
+    }
+
+    100% {
+        bottom: 8rem;
+        left: 25rem;
+    }
 }
 
 .movePen {
+    left: 30px;
     position: absolute;
-    width: 25rem;
+    width: 75rem;
     height: 3rem;
     background: #fcfcfc;
     bottom: 10rem;
@@ -78,7 +67,11 @@ img {
         width: 25rem;
     }
 
-    100% {
+    to {
         width: 1rem;
     }
+}
+
+img {
+    width: 100px;
 }
