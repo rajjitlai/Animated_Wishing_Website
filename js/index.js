@@ -58,15 +58,19 @@ document.addEventListener('DOMContentLoaded', init);
 function init() {
     const txtElement = document.querySelector('.txt-type');
     const words = [
-        "May you always have that shining smile like today!",
-        "YOU are a person who deserves to be celebrated.",
-        "I hope your birthday is filled with laughter and joy.",
-        "Wishing you a day full of love and happiness on your special day.",
-        "I hope you have a wonderful day.",
-        "Wishing you a day of endless smiles and unforgettable moments."
+        // happy father's day wishes for Father
     ];
 
     const wait = 2500;
 
     new TypeWriter(txtElement, words, wait);
 }
+
+const images = document.querySelectorAll('.flip-image')
+let current = 0
+
+setInterval(() => {
+    images[current].classList.remove('active')
+    current = (current + 1) % images.length
+    images[current].classList.add('active')
+}, 1500)
