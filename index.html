@@ -11,27 +11,28 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="paper">
-            <h1>
-                <span class="title">
-                    Happy Father's Day
-                </span>
-            </h1>
-            <div id="flipbook">
-                <img src="images/1.png" alt="photo" class="flip-image active">
-                <img src="images/2.png" alt="photo" class="flip-image">
-                <img src="images/3.png" alt="photo" class="flip-image">
-                <img src="images/4.png" alt="photo" class="flip-image">
-                <img src="images/5.png" alt="photo" class="flip-image">
-            </div>
-            <div class="message">
+    <main class="container">
+        <article class="paper">
+            <header>
+                <h1>
+                    <span class="title">
+                        Happy Father's Day
+                    </span>
+                </h1>
+            </header>
+            <section id="flipbook" aria-label="Photo gallery">
+                <img src="images/1.png" alt="A cherished memory with Dad" class="flip-image active">
+                <img src="images/2.png" alt="Happy moments together" class="flip-image">
+                <img src="images/3.png" alt="Family celebration" class="flip-image">
+                <img src="images/4.png" alt="Dad smiling" class="flip-image">
+                <img src="images/5.png" alt="Special occasion" class="flip-image">
+            </section>
+            <section class="message" aria-live="polite">
                 <span class="txt-type"></span>
-                <i class="fas fa-pencil-alt"></i>
-            </div>
-        </div>
-    </div>
-    <script src="/js/index.js"></script>
+            </section>
+        </article>
+    </main>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

@@ -13,43 +13,44 @@ class TypeWriter {
     type() {
         const current = this.wordIndex % this.words.length;
         const fullTxt = this.words[current];
-
-        if (this.isDeleting) {
-            this.txt = fullTxt.substring(0, this.txt.length - 1.5);
-        } else {
-            this.txt = fullTxt.substring(0, this.txt.length + 2);
-        }
-
-        this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
-
         let typeSpeed = 100;
 
-        const typingElement = document.querySelector('.fas');
-
         if (this.isDeleting) {
-            typeSpeed /= 4;
-        }
-
-        if (this.isDeleting) {
-            typingElement.className = "fas fa-pencil-alt erasing-animation";
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            typeSpeed = 40;
         } else {
-            typingElement.className = "fas fa-pencil-alt writing-animation";
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
+        this.txtElement.innerHTML = `<span>${this.txt}</span><i class="fas fa-pencil-alt"></i>`;
+        const pen = this.txtElement.querySelector('.fas');
+
+        if (this.isDeleting) {
+            pen.classList.add('pen-flipped', 'erasing-animation');
+        } else {
+            pen.classList.add('writing-animation');
+        }
+
+        // Handle the end of typing: wait, then rotate, then start erasing
         if (!this.isDeleting && this.txt === fullTxt) {
-            typeSpeed = this.wait;
-            this.isDeleting = true;
-            typingElement.className = "fas fa-pencil-alt";
+            pen.classList.remove('writing-animation');
+            setTimeout(() => {
+                pen.classList.add('pen-flipped');
+                setTimeout(() => {
+                    this.isDeleting = true;
+                    this.type();
+                }, 700); // Delay for rotation animation
+            }, this.wait);
+            return; // Break the recursive chain to wait for the timeouts
+        }
 
-
-        } else if (this.isDeleting && this.txt === '') {
+        if (this.isDeleting && this.txt === '') {
             this.isDeleting = false;
             this.wordIndex++;
             typeSpeed = 1000;
-
         }
 
-        setTimeout(() => this.type(), typeSpeed)
+        setTimeout(() => this.type(), typeSpeed);
     }
 }
 
