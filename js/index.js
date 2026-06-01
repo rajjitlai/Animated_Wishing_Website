@@ -21,6 +21,7 @@ class TypeWriter {
     type() {
         const current = this.wordIndex % this.words.length;
         const fullTxt = this.words[current];
+<<<<<<< HEAD
 
         if (this.isDeleting) {
             this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -41,8 +42,29 @@ class TypeWriter {
 
         // Move pencil after DOM updates (both typing and erasing)
         requestAnimationFrame(() => this.movePencilToCursor());
+=======
+        let typeSpeed = 100;
 
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            typeSpeed = 40;
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+>>>>>>> f1b88d9f3e9b795cfae92d2c215a44f1ca5716d3
+
+        this.txtElement.innerHTML = `<span>${this.txt}</span><i class="fas fa-pencil-alt"></i>`;
+        const pen = this.txtElement.querySelector('.fas');
+
+        if (this.isDeleting) {
+            pen.classList.add('pen-flipped', 'erasing-animation');
+        } else {
+            pen.classList.add('writing-animation');
+        }
+
+        // Handle the end of typing: wait, then rotate, then start erasing
         if (!this.isDeleting && this.txt === fullTxt) {
+<<<<<<< HEAD
             typeSpeed = this.wait;
             this.isDeleting = true;
         } else if (this.isDeleting && this.txt === '') {
@@ -87,6 +109,26 @@ class TypeWriter {
 
         this.typingElement.style.left = left + 'px';
         this.typingElement.style.top = top + 'px';
+=======
+            pen.classList.remove('writing-animation');
+            setTimeout(() => {
+                pen.classList.add('pen-flipped');
+                setTimeout(() => {
+                    this.isDeleting = true;
+                    this.type();
+                }, 700); // Delay for rotation animation
+            }, this.wait);
+            return; // Break the recursive chain to wait for the timeouts
+        }
+
+        if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.wordIndex++;
+            typeSpeed = 1000;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
+>>>>>>> f1b88d9f3e9b795cfae92d2c215a44f1ca5716d3
     }
 }
 
